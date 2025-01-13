@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class UnitDeck {
 	
-	ArrayList<CardCounter> cardsInDeck = new ArrayList<CardCounter>();
-	String deckName;
+	private ArrayList<CardCounter> cardsInDeck = new ArrayList<CardCounter>();
+	private String deckName;
 	
 	public UnitDeck(String deckName) {
 		super();
@@ -75,11 +75,6 @@ public class UnitDeck {
 			countCard = countCard + cardsInDeck.get(i).getCount();
 		}
 		return countCard;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(deckName);
 	}
 
 	@Override
