@@ -11,7 +11,7 @@ public class UnitCard {
 	
 	
 
-	private UnitCard(String name, int bloodCost, int power, int health, String flavorText) {
+	public UnitCard(String name, int bloodCost, int power, int health, String flavorText) {
 		super();
 		
 		setName(name);

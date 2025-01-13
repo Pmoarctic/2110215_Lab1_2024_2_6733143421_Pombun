@@ -1,5 +1,10 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import logic.*;
+
 public class DeckManager {
 	
 	public static void main(String args[]) {
