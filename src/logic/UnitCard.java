@@ -72,15 +72,6 @@ public class UnitCard {
 		this.health = health;
 	}
 
-	
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
