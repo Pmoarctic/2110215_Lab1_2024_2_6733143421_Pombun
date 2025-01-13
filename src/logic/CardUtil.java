@@ -1,7 +1,6 @@
 package logic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,6 +9,9 @@ public class CardUtil {
 	public static boolean isExistsInList(UnitCard card, ArrayList<UnitCard> list) {
 		
 		//TODO: Fill Code
+		for(UnitCard iterateCard : list) {
+			if(iterateCard.equals(card))return true;
+		}
 		return false;
 
 	}
@@ -17,6 +19,9 @@ public class CardUtil {
 	public static boolean isExistsInList(UnitDeck deck, ArrayList<UnitDeck> list) {
 		
 		//TODO: Fill Code
+		for(UnitDeck iterateDeck : list) {
+			if(iterateDeck.equals(deck))return true;
+		}
 		return false;
 
 	}
@@ -24,6 +29,11 @@ public class CardUtil {
 	public static boolean cardExistsInDeckList(ArrayList<UnitDeck> deckList, UnitCard cardToTest) {
 		
 		//TODO: Fill Code
+		for(UnitDeck iterateDeck : deckList) {
+			for(CardCounter iterateCardCounter : iterateDeck.getCardsInDeck()) {
+				if(iterateCardCounter.getCard().equals(cardToTest))return true;
+			}
+		}
 		return false;
 	}
 	
@@ -33,8 +43,26 @@ public class CardUtil {
 		ArrayList<UnitCard> cardsFromFile = new ArrayList<UnitCard>();
 
 		//TODO: Fill Code
-		
-		return null;
+		try {
+			Scanner sc = new Scanner(fileToRead);
+			while(sc.hasNextLine()) {
+				String lineText = sc.nextLine();
+				String[] arrayString = lineText.split(",");
+				String cardName = arrayString[0];
+				int bloodCost = Integer.parseInt(arrayString[1]);
+				int power = Integer.parseInt(arrayString[2]);
+				int health = Integer.parseInt(arrayString[3]);
+				String flavorText = arrayString[4];
+				
+				UnitCard createCard = new UnitCard(cardName,bloodCost,power,health,flavorText);
+				cardsFromFile.add(createCard);
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cardsFromFile;
 	}
 
 	public static void printCardList(ArrayList<UnitCard> cardList, boolean verbose) {
